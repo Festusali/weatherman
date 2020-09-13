@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Accurate Weather Information Of Any City Round The World">
+    <meta name="keywords" content="Weather, City Weather, Accurate Weather">
+    <meta name="author" content="Festus Ali">
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+
+    <link rel="manifest" href="manifest.json">
+    <!-- Meta tags and icons for iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Weather Man">
+    <link rel="apple-touch-icon" href="/assets/icons/icon-152x152.png">
+
+    <!-- Address Bar and Title Bar Theme -->
+    <meta name="theme-color" content="#3ef57b" />
+
+    <title>Weather Man</title>
+</head>
+<body>
+    <main>
+        <nav>
+            <ul>
+                <li>
+                    <button id="installButton">Install Weatherman</button>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <div>
+                        <form id="searchForm" action="" method="get">
+                            <input type="search" name="city" id="searchCity" placeholder="City name..." required>
+                            <button id="searchButton">
+                                Search
+                            </button>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <header>
+            <h1>
+                WEATHER MAN
+            </h1>
+            <h2>
+                Instant, Reliable Weather Forecast!
+            </h2>
+        </header>
+        <div class="container">
+            <div class="weather">
+                <div class="city col-12">
+                    <div class="title">
+                        <span class="city-title">
+                            New York City
+                        </span> &nbsp;&nbsp; |==| &nbsp;&nbsp;
+                        <span class="city-country">
+                            US
+                        </span>
+                    </div>
+                    <div class="weather-icon col-m6">
+                        <img src="assets/icons/icon-192x192.png" alt="Weather Icon">
+                    </div>
+                    <div class="desc-container col-m6">
+                        <div>
+                            <span class="description">
+                                Cloudy
+                            </span>
+                            &nbsp;&nbsp; |==| &nbsp;&nbsp;
+                            <span class="wind-description" title="Wind Speed & Wind Degrees (metre/second)">
+                                Wind Speed
+                            </span>
+                        </div>
+                        <div class="temperature">
+                            <p>20°<span>C</span></p>
+                        </div>
+                    </div>
+                    <div class="date-time">
+                        <div class="dmy">
+                            <div id="time">4:09:49</div>
+                            <div class="date">
+                                Wednesday, September 09, 2020
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="forecast col-12">
+                    <div class="forecast-icon">
+                        <img src="assets/icons/icon-152x152.png" alt="Demonstrative Image">
+                    </div>
+                    <div class="week-weather">
+                        <h3>Weekly Weather</h3>
+                        <div class="table-con">
+                            <table id="forecast">
+                                <thead>
+                                    <tr>
+                                        <th title="Day of the week">
+                                            Day
+                                        </th>
+                                        <th title="Weather description">
+                                            Weather
+                                        </th>
+                                        <th title="Temperature in Celsius">
+                                            Temp
+                                        </th>
+                                        <th title="Wind Speed (metre/second)">
+                                            WS m/s
+                                        </th>
+                                        <th title="Wind Degrees (metre/second)">
+                                            WD m/s
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            Mon
+                                        </td>
+                                        <td>
+                                            Rainy
+                                        </td>
+                                        <td>
+                                            24°C
+                                        </td>
+                                        <td>
+                                            1.41
+                                        </td>
+                                        <td>
+                                            14
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Mon
+                                        </td>
+                                        <td>
+                                            Rainy
+                                        </td>
+                                        <td>
+                                            24°C
+                                        </td>
+                                        <td>
+                                            1.41
+                                        </td>
+                                        <td>
+                                            14
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Mon
+                                        </td>
+                                        <td>
+                                            Rainy
+                                        </td>
+                                        <td>
+                                            24°C
+                                        </td>
+                                        <td>
+                                            1.41
+                                        </td>
+                                        <td>
+                                            14
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="copyright">
+                <p>
+                    &copy; <span id="copyDate">2020</span> WeatherMan. All Rights Reserved. Designed and Developed by <a
+                        href="https://simpleportfolio.pythonanywhere.com/user/Festus/" target="_blank"
+                        title="See Festus' Portfolio" rel="noopener noreferrer">Ali Festus</a>
+                </p>
+            </div>
+        </footer>
+    </main>
+    <script src="js/script.js"></script>
+    
+    <!-- register service worker -->
+    <script>
+    // Check [Service Worker && Push Notification] And Register If Supported.
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('service-worker.js')
+        .then((swReg) => {
+            console.log('Service worker registered.', swReg);
+            console.log('Push Notification is supported.');
+        })
+        .catch((error) => {
+            console.error('Error Registering Service Worker: ', error)
+        });
+    });
+    } else {
+        console.warn('[Service Worker and Push Notification] not supported.')
+    }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,246 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+body {
+    background: #6a5979;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin: 0px;
+    padding: 100px 15px;
+}
+
+main {
+    margin: 0 auto;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+h1, h2, h3, h4 {
+    color: azure;
+}
+
+nav {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin: 0;
+    background-color: rgba(0, 0, 0);
+    z-index: 10;
+}
+
+nav ul li, nav ul {
+    display: inline-block;
+    list-style: none;
+    padding: 5px 10px;
+    font-size: 25px;
+}
+
+#searchCity {
+    padding: 5px 10px;
+}
+
+#installButton, #searchButton {
+    background-color: darkgrey;
+    padding: 5px 15px;
+}
+
+#installButton:hover, #searchButton:hover {
+    background-color: rgb(6, 255, 65);
+    border: 2px solid azure;
+}
+
+.city,
+.forecast {
+    padding: 0 10px;
+    min-height: 500px;
+    box-shadow: 1px 1px 4px;
+}
+
+div.weather {
+    background: linear-gradient(to top, rgb(10, 10, 30), rgb(0, 10, 30), transparent);
+}
+
+.forecast-icon, .week-weather {
+    height: 50%;
+}
+
+.title {
+    margin: 15px auto;
+    padding: 30px 30px 0px 0px;
+    text-align: right;
+}
+
+.title span {
+    color: rgb(238, 238, 238);
+    font-size: 1.5em;
+    font-weight: 800;
+    margin-top: 10px;
+}
+
+.description, .wind-description {
+    font-size: 1.5em;
+    font-weight: 800;
+}
+
+div.table-con {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+th {
+    border-bottom: azure solid 2px;
+    text-align: center;
+}
+
+td {
+    border-bottom: azure solid 1px;
+}
+
+/*
+.city-country {
+    padding-left: 10px;
+}
+*/
+
+.weather-icon {
+    max-width: 260px;
+    margin: auto;
+}
+
+.desc-container {
+    margin: auto;
+    padding: 0;
+}
+
+.date-time {
+    color: rgb(255, 255, 255);
+    width: 90%;
+    padding: 0px 30px 10px;
+}
+
+.dmy {
+    width: 50%;
+    text-align: left;
+    padding-top: 55px;
+}
+
+div#time {
+    font-size: 35px;
+    font-weight: 100;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.temperature p {
+    font-size: 125px;
+    font-weight: 100;
+}
+
+.temperature p span {
+    font-size: 70px;
+    font-weight: 200;
+}
+
+.forecast-icon {
+    margin: 25px 0px;
+}
+
+img {
+    max-width: 100%;
+}
+
+.week-weather h3 {
+    font-size: 1.5em;
+    width: 90%;
+    margin: 0px auto 20px;
+    padding-bottom: 10px;
+    border-bottom: rgb(238, 238, 238) solid thin;
+}
+
+.footer {
+    padding-bottom: 20px;
+}
+
+.container {
+    width: 95%;
+    margin: 50px auto;
+}
+
+
+.weather-card {
+    background: #fff;
+    border-radius: 2px;
+    box-shadow:
+        0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 3px 1px -2px rgba(0, 0, 0, 0.2),
+        0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    margin: 16px;
+    padding: 16px;
+    position: relative;
+}
+
+.offline-panda {
+    display: block;
+    margin-bottom: 1.5em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+[class*="col-"] {
+    width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+
+    /* For tablets: */
+    .container {
+        width: 85%;
+    }
+
+    th, td {
+        padding: 5px 10px;
+    }
+
+    .col-m6 {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 920px) {
+
+    /* For desktop: */
+    .container {
+        width: 70%;
+    }
+
+    th, td {
+        padding: 7.5px 15px;
+    }
+
+    .col-6 {
+        width: 50%;
+    }
+}
