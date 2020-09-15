@@ -55,12 +55,17 @@ nav ul li, nav ul {
     padding: 5px 10px;
 }
 
-#installButton, #searchButton {
+#installButton, #searchButton, .back-button {
     background-color: darkgrey;
     padding: 5px 15px;
 }
 
-#installButton:hover, #searchButton:hover {
+.back-button {
+    list-style: none;
+    text-decoration: none;
+}
+
+#installButton:hover, #searchButton:hover, .back-button:hover {
     background-color: rgb(6, 255, 65);
     border: 2px solid azure;
 }
@@ -100,6 +105,18 @@ div.weather {
 
 div.table-con {
     overflow-x: auto;
+}
+
+a {
+    color: rgb(0, 10, 30);
+}
+
+a:hover, a:active {
+    color: dodgerblue;
+}
+
+a:visited {
+    color: ghostwhite;
 }
 
 table {

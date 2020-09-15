@@ -6,9 +6,10 @@ let promptInstall = null;
 let city = false;
 
 // Create necessary constants
-const apiKey = "SECRET_API_KEY";
+const apiKey = "The Secret Key";
 const installButton = document.getElementById('installButton');
 const searchForm = document.getElementById('searchForm');
+const searchButton = document.getElementById('searchButton');
 
 
 // Gets search value from form
@@ -20,6 +21,9 @@ function getSearchCity() {
 // Listen to submit event on search form
 searchForm.addEventListener('submit', (event) => {
     event.preventDefault();
+    document.getElementById('searchCity').innerHTML = '';
+    searchButton.textContent = "Searching...";
+    searchButton.setAttribute('disabled', true);
     getSearchCity();
     if (city) {
         console.log('calling: ', "getWeatherForecast(city)");
@@ -27,6 +31,8 @@ searchForm.addEventListener('submit', (event) => {
     } else {
         console.log('Enter valid city name.')
     }
+    searchButton.textContent = "Search";
+    searchButton.removeAttribute('disabled');
 })
 
 // Function for working with dates
@@ -104,9 +110,6 @@ function updateForecastWeather(forecast) {
 function getData(url) {
     return fetch(url).then((response) => {
         return response.json();
-    }).catch((error) => {
-        console.log('Error fetching data.', error);
-        return null;
     })
 }
 
@@ -129,7 +132,7 @@ function getWeatherForecast(cityName) {
     let currentw = null;
     getData(curApiUrl)
         .then((current) => {
-            if (current && current.list !== 0) {
+            if (current && parseInt(current.list) !== 0) {
                 currentw = current;
                 console.log('Inside forecast if. List: ', current.list, current.list[0].coord.lat);
                 const lat = current.list[0].coord.lat;
@@ -158,7 +161,7 @@ function getWeatherForecast(cityName) {
                 updateCurrentWeather(cached[0]);
                 updateForecastWeather(cached[1].daily);
             } else {
-                return null; // window.location = '/offline.html';
+                return window.location = '/offline.html';
             }
         })
     return;
@@ -178,6 +181,10 @@ function updatePushButton() {
     }
     pushButton.disabled = false;
 }
+
+// Listen for global window installation prompt.
+// Then invoke deferInstallPrompt that will respond accordingly.
+window.addEventListener('beforeinstallprompt', deferInstallPrompt);
 
 // Save event for later prompt
 function deferInstallPrompt(event) {
@@ -205,10 +212,6 @@ installButton.addEventListener('click', (event) => {
         promptInstall = null;
     });
 })
-
-// Listen for global window installation prompt.
-// Then invoke deferInstallPrompt that will respond accordingly.
-window.addEventListener('beforeinstallprompt', deferInstallPrompt);
 
 // Since users can attempt app installation from other sources,
 // Listen to window app installation event and log appropriately.

@@ -2,7 +2,7 @@
 
 // Cache names. Must be updated anytime cache changes.
 // Even if it is spelling correction.
-const CACHE_ASSETS_NAME = 'assets-cache-v5';
+const CACHE_ASSETS_NAME = 'assets-cache-v6';
 
 // List of files to cache for offline use
 const ASSETS_TO_CACHE = [
@@ -16,8 +16,10 @@ const ASSETS_TO_CACHE = [
     'assets/icons/icon-152x152.png',
     'assets/icons/icon-192x192.png',
     'assets/icons/icon-512x512.png',
-    'css/styles.css',
-    'js/script.js'
+    'assets/icons/maskable_icon.png',
+    '/css/styles.css',
+    '/js/script.js',
+    '/robots.txt'
 ]
 
 
@@ -34,14 +36,6 @@ self.addEventListener('install', (event) => {
     // Enable Service Worker immediately after installation.
     // Even when there is still other open tab(s)/window(s)
     self.skipWaiting();
-    
-    /*
-    evt.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => {
-            console.log('[ServiceWorker] Pre-caching offline page');
-            return cache.addAll(FILES_TO_CACHE);
-        })
-    );*/
 });
 
 // After Activating new Service Worker and Cache,
@@ -53,7 +47,7 @@ self.addEventListener('activate', (event) => {
         caches.keys().then((keyList) => {
             return Promise.all(keyList.map((key) => {
                 if (key !== CACHE_ASSETS_NAME) {
-                    console.log('[Service Worker] Removing old cacched data/assets', keys)
+                    console.log('[Service Worker] Removing old cacched data/assets', key)
                     return caches.delete(key);
                 }
             }));
@@ -62,19 +56,18 @@ self.addEventListener('activate', (event) => {
     self.clients.claim();
 });
 
-
 // Listen to fetch events
 self.addEventListener('fetch', (event) => {
     if (event.request.mode !== 'navigate') {
-        // Not a page navigation, bail.
+        // Not a page navigation, ignore.
         return;
     }
     event.respondWith(
         fetch(event.request)
         .catch(() => {
-            return caches.open(CACHE_NAME)
+            return caches.open(CACHE_ASSETS_NAME)
                 .then((cache) => {
-                    return cache.match('offline.html');
+                    return cache.match('/offline.html');
                 });
         })
     );
